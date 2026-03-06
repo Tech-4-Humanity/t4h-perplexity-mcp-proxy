@@ -17,9 +17,7 @@ const DEFAULT_ALLOWED_TOOLS = [
 
 function getAllowedTools() {
   const raw = process.env.MCP_ALLOWED_TOOLS || DEFAULT_ALLOWED_TOOLS.join(',');
-  return new Set(
-    raw.split(',').map(s => s.trim()).filter(Boolean)
-  );
+  return new Set(raw.split(',').map(s => s.trim()).filter(Boolean));
 }
 
 function json(data, status = 200, extraHeaders = {}) {
@@ -106,7 +104,7 @@ async function handlePost(request, upstreamUrl) {
         id: body.id ?? null,
         error: {
           code: -32601,
-          message: \`Tool not allowed: \${toolName}\`,
+          message: `Tool not allowed: ${toolName}`,
         },
       }, 403);
     }
