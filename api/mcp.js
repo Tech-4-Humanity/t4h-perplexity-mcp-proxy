@@ -104,7 +104,7 @@ async function handlePost(request, upstreamUrl) {
         id: body.id ?? null,
         error: {
           code: -32601,
-          message: `Tool not allowed: ${toolName}`,
+          message: 'Tool not allowed: ' + toolName,
         },
       }, 403);
     }
